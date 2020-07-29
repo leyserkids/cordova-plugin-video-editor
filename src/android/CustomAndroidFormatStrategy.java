@@ -61,14 +61,14 @@ public class CustomAndroidFormatStrategy implements MediaFormatStrategy {
 
         if (inLonger > outLonger && outLonger > 0) {
             if (inWidth >= inHeight) {
-                aspectRatio = (double) inLonger / (double) inShorter;
+                aspectRatio = (double) inLonger / (double) inShorter * 2.0;
                 outWidth = outLonger;
-                outHeight = Double.valueOf(outWidth / aspectRatio).intValue();
+                outHeight = (int)Math.round(outWidth / aspectRatio) * 2;
 
             } else {
-                aspectRatio = (double) inLonger / (double) inShorter;
+                aspectRatio = (double) inLonger / (double) inShorter * 2.0;
                 outHeight = outLonger;
-                outWidth = Double.valueOf(outHeight / aspectRatio).intValue();
+                outWidth = (int)Math.round(outHeight / aspectRatio) * 2;
             }
         } else {
             outWidth = inWidth;
