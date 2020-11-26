@@ -210,7 +210,12 @@ public class VideoEditor extends CordovaPlugin {
                             }
 
                             if (deleteInputFile) {
-                                inFile.delete();
+                                try {
+                                    inFile.delete();
+                                } catch (Exception e){
+                                    // delete input file failed should not thrown
+                                    e.printStackTrace();
+                                }
                             }
 
                             callback.success(outputFilePath);
